@@ -1,8 +1,8 @@
 package main
 
 import (
+	"computer_network/zookeeper/public"
 	"fmt"
-	"gateway_demo/proxy/zookeeper/public"
 	"log"
 	"os"
 	"os/signal"
