@@ -3,6 +3,8 @@ module computer_network
 go 1.22
 
 require (
+	github.com/afex/hystrix-go v0.0.0-20180502004556-fa1af6a1f4f5
+	github.com/garyburd/redigo v1.6.4
 	github.com/gorilla/websocket v1.5.3
 	github.com/hashicorp/consul/api v1.30.0
 	github.com/samuel/go-zookeeper v0.0.0-20201211165307-7117e9ea2414
@@ -24,6 +26,7 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
+	github.com/smartystreets/goconvey v1.8.1 // indirect
 	golang.org/x/exp v0.0.0-20230817173708-d852ddb80c63 // indirect
 	golang.org/x/sys v0.26.0 // indirect
 	golang.org/x/text v0.19.0 // indirect
