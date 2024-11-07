@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+// 定义go生成后的包名
+//生成的Go代码将放在与当前.proto文件相同的目录中。
+//生成的Go包名将是hello
+//;为分隔符
+option go_package = "./;hello";
+package proto;
+
+// 定义入参
+message Request {
+  string name =1;
+}
+// 定义返回
+message Response {
+  string result = 1;
+}
+
+// 定义接口
+service UserService {
+  rpc Say(Request) returns (Response) {}
+}
+//同时生成hello.pb.go 和 hello_grpc.pb.go
+//➜ protoc --go-grpc_out=. --go_out=. hello.proto
