@@ -20,6 +20,7 @@ func main() {
 		//第一个参数是用点号连接的 RPC 服务名字和方法名字，
 		//第二和第三个参数分别我们定义 RPC 方法的两个参数，第一个是客服端传递的消息，第二个是由服务端产生返回的结果。
 		_ = dial.Call("HiLinzy.SayHi", "linzy", &result)
+		//异步调用为dial.Go
 		fmt.Println("rpc service result:", result)
 		time.Sleep(time.Second)
 	}

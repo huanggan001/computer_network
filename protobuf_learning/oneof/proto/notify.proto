@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+//声明protobuf中的包名
+package notify;
+
+//声明生成的Go代码的导入路径
+option go_package = "computer_network/protobuf_learning/oneof/proto/notify";
+
+message Notify{
+  string text = 1;
+  oneof notice_way{
+    string phone = 2;
+    string email = 3;
+  }
+}
