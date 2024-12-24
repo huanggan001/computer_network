@@ -6,10 +6,30 @@ package notify;
 //声明生成的Go代码的导入路径
 option go_package = "computer_network/protobuf_learning/oneof/proto/notify";
 
+import "google/protobuf/field_mask.proto";
+
 message Notify{
   string text = 1;
   oneof notice_way{
     string phone = 2;
     string email = 3;
   }
+}
+
+message Book{
+  string title = 1;
+  //optional作用是该值可赋值可不赋值，比如price传了0，服务端那边不知道是默认值，还是它就是0
+  optional int64 price = 2;
+  message Info{
+    string a = 1;
+    string b = 2;
+  }
+  Info info = 3;
+}
+
+message updateBookRequest{
+  string op = 1;//更新的人
+  Book book = 2;//书的信息
+  // 要更新的字段
+  google.protobuf.FieldMask update_mask = 3;
 }

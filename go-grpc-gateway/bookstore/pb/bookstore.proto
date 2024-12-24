@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package books;
+
+option go_package="grpc/bookstore/pb/books";
+import "google/api/annotations.proto";
+
+
+message Shelf{
+  int64 id = 1;
+  string theme = 2;
+  int64 size = 3;
+}
+
+message Book{
+  int64 id = 1;
+  string author = 2;
+  string title = 3;
+}
+
+message GetShelfRequest{
+  int64 id = 1;
+}
+
+//创建书架
+message CreateShelfRequest{
+  Shelf shelf = 1;
+}
+
+//请求指定书架上的书
+message ListBooksRequest{
+  int64 id = 1;
+  string page_token = 2;
+}
+//返回指定书架上的书
+message ListBooksResponse{
+  repeated Book books = 1;
+  string page_token = 2;
+}
+
+//创建书本
+message CreateBookRequest{
+  //在指定书架上创建书本
+  int64 id = 1;
+  Book book = 2;
+}
+
+service bookstore{
+  rpc GetShelf(GetShelfRequest) returns (Shelf){
+    option (google.api.http) = {
+      get : "/v1/shelves/{id}"
+    };
+  }
+  rpc CreateShelf(CreateShelfRequest) returns (Shelf){
+    option (google.api.http) = {
+      post : "/v1/create/shelf",
+      body : "shelf"
+    };
+  }
+  rpc ListBooksByShelf(ListBooksRequest) returns (ListBooksResponse){
+    option (google.api.http) = {
+      get : "/v1/list/books/{id}",
+    };
+  }
+  rpc CreateBooksByShelf(CreateBookRequest) returns (Book){
+    option (google.api.http) = {
+      post : "/v1/create/books/{id}",
+      body : "book"
+    };
+  }
+}
