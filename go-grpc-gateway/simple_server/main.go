@@ -46,7 +46,7 @@ func main() {
 	//注册Greeter
 	err = proto.RegisterGreeterHandler(context.Background(), gwmux, conn)
 	if err != nil {
-		log.Fatalf("failed to register gateway: %v", err)
+		log.Fatalf("failed to register_grpc_service gateway: %v", err)
 	}
 	//开启一个8081的http服务器，充当代理服务器，将http请求转为grpc请求
 	gwServer := &http.Server{

@@ -58,7 +58,7 @@ func main() {
 	gwmux := runtime.NewServeMux()
 	// RegisterHelloWorldHandlerFromEndpoint：注册HelloWorld服务的HTTP Handle到grpc端点
 	if err := books.RegisterBookstoreHandlerFromEndpoint(ctx, gwmux, "127.0.0.1:8080", dopts); err != nil {
-		log.Printf("Failed to register gw server: %v\n", err)
+		log.Printf("Failed to register_grpc_service gw server: %v\n", err)
 	}
 	//http服务
 	//分配并返回一个新的ServeMux
